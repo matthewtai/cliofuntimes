@@ -1,7 +1,10 @@
 //OAuth 
-function verifyButton(){
-if(sessionStorage.getItem("accesstoken")!=="undefined"||null){
-    document.getElementById("verifiedbutton").style.display = "inline"}
+function verifyButton() {
+    if (sessionStorage.getItem("accesstoken") !== null) {
+        console.log("Verification Initiated", sessionStorage.getItem("accesstoken"));
+        document.getElementById("verifiedbutton").style.display = "inline"
+    }
+    
 }
 
 function saveKeyandSecret() {
@@ -16,7 +19,7 @@ function authorize() {
     var key = sessionStorage.getItem("clientkey");
     var redirect_uri = 'https://staging.clio.com/oauth/approval';
     var authorizeurl = 'https://staging.clio.com/oauth/authorize?response_type=code&client_id=' + key + '&redirect_uri=' +
-    redirect_uri;
+        redirect_uri;
     console.log("I'M AUTHORIZING!");
     window.open(authorizeurl);
 }
@@ -39,10 +42,10 @@ function saveAccessToken() {
 
     }).then((response) => response.json())
         .then((data) => sessionStorage.setItem("accesstoken", data.access_token)).then(window.location.reload())
-       
-        }
 
-       
-    
-            
+}
+
+
+
+
 
