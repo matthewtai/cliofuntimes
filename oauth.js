@@ -1,4 +1,8 @@
 //OAuth 
+function verifyButton(){
+if(sessionStorage.getItem("accesstoken")!=="undefined"){
+    document.getElementById("verifiedbutton").style.display = "inline"}
+}
 
 function saveKeyandSecret() {
     console.log("Key and Secret Saved")
@@ -34,7 +38,11 @@ function saveAccessToken() {
         }
 
     }).then((response) => response.json())
-        .then((data) => sessionStorage.setItem("accesstoken", data.access_token));
+        .then((data) => sessionStorage.setItem("accesstoken", data.access_token)).then(window.location.reload())
+       
+        }
 
+       
+    
+            
 
-}
