@@ -41,7 +41,7 @@ function saveAccessToken() {
         }
 
     }).then((response) => response.json())
-        .then((data) => sessionStorage.setItem("accesstoken", data.access_token)).then(verifyButton())
+        .then((data) => sessionStorage.setItem("accesstoken", data.access_token)).then(setTimeout(() => window.location.reload(), 2000))
 
 }
 
