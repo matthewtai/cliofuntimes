@@ -1,8 +1,9 @@
 //OAuth 
 function verifyButton() {
-    if (sessionStorage.getItem("accesstoken") != null) {
-        console.log("Verification Initiated", sessionStorage.getItem("accesstoken"));
-        document.getElementById("verifiedbutton").style.display = "inline"
+    if (sessionStorage.getItem("accesstoken") === "undefined" ||null||undefined) {
+        document.getElementById("verifiedbutton").style.display = "hidden";
+    }else{
+        document.getElementById("verifiedbutton").style.display = "inline";
     }
     
 }
