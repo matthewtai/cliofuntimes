@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Clio Test</title>
+  <meta charset="UTF-8">
+  <!-- local style  -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- responsive inspection  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="oauth.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="logoDiv">
+      <div>
+        <img class="responsive-img" src="assets/images/logo.png" width="200"> <strong>API FUN TIMES</strong>
+      </div>
+      <div style="position: fixed; right: 2vw; top:2vh">
+        <i onclick="window.open('./index.html')" class="fa fa-home" style="font-size: 4rem"></i>
+      </div>
+
+
+    </div>
+    <div>
+      <button class="button"
+        onclick="window.open('https://staging.clio.com/nc/#/settings?path=settings/developer_applications')">Clio
+        Developer Apps</button>
+    </div>
+    <div style="text-align: center;">
+      <form>
+        <input style="width:30%;" name="clientkey" id="clientkey" placeholder="Enter Client Key Here">
+        <input style="width:30%;" name="clientsecret" id="clientsecret" placeholder="Enter Client Secret Here">
+      </form>
+      <button class="button" onclick="saveKeyandSecret()">Save Key and Secret</button>
+    </div>
+    <div>
+
+    </div>
+    <div style="text-align: center;">
+      <button class="button" onclick="authorize()">Let's Get Authorized (New Window)</button>
+    </div>
+    <div style="text-align: center;">
+      <form>
+        <input style="width:20%" name="authcode" id="authcode" placeholder="Enter Auth Code Here">
+      </form>
+      <button class="button" onclick="saveAccessToken()">Save Your Access Token to Session Storage</button>
+    </div>
+
+    <div class="main">
+      <h1>API Questions</h1>
+      <ul class="cards">
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="./assets/images/users.png"></div>
+            <div class="card_content">
+              <h2 class="card_title">Users</h2>
+              <p class="card_text">Why are Clio for Co-Counsel Users not showing up?</p>
+              <button onclick="window.location='./specificUser.html'" class="btn card_btn">Go!</button>
+            </div>
+          </div>
+        </li>
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="./assets/images/users.png"></div>
+            <div class="card_content">
+              <h2 class="card_title">TBD</h2>
+              <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat cumque, distinctio
+                qui voluptatibus perferendis explicabo eos dignissimos ad minima corporis.</p>
+              <button class="btn card_btn">Read More</button>
+            </div>
+          </div>
+        </li>
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image"><img src="./assets/images/users.png"></div>
+            <div class="card_content">
+              <h2 class="card_title">TBD</h2>
+              <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat cumque, distinctio
+                qui voluptatibus perferendis explicabo eos dignissimos ad minima corporis.</p>
+              <button class="btn card_btn">Read More</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+</body>
+
+</html>

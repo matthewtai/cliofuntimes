@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Clio Test</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="oauth.js"></script>
+    <script src="/assets/js/specificuser.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <div class="logoDiv" width="100%">
+            <div>
+                <img class="responsive-img" src="assets/images/logo.png" width="200"> <strong>API FUN TIMES</strong>
+            </div>
+            <div style="position: fixed; right: 2vw; top:2vh">
+                <i onclick="window.open('./index.html')" class="fa fa-home" style="font-size: 4rem"></i>
+            </div>
+
+        </div>
+
+        <div class="ClioNav"
+            style="background-color: #0075bb; width: 100%; height:5vh; justify-content: left ;align-items:center;display: flex;">
+            <img src="assets/images/navlogo.svg" width="40px" style="margin-left:20px;">
+        </div>
+        <div class="ClioBody">
+            <div class="ClioSideBar"
+                style="width:15%;height:80vh;float:left;background-color: #001c37;color: white; text-align: left 2;">
+                <div class="SideBarDiv">
+                    <p>Dashboard</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Calendar</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Tasks</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Matters</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Contacts</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Activities</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Billing</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Online payments</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Accounts</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Documents</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Communications</p>
+                </div>
+                <div style="opacity: 80%; background-color: #0075bb; width: 100%;">
+                    <p style="margin-left: 3vw">Reports</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>App Integrations</p>
+                </div>
+                <div class="SideBarDiv">
+                    <p>Settings</p>
+                </div>
+
+            </div>
+
+            <div style="text-align:left; width:85%;height:80vh;float:right; padding-left: 1vw;">
+                <h2 style="border-bottom: 1px solid lightgray;">Productivity by User Report</h2>
+                <div>
+                    <h4>Select user</h4>
+                </div>
+
+                <form id="userform">
+                    <input type="radio" id="allusers" name="users" value="allusers" onclick="removeDropdown()">
+                    <label for="allusers">All Users</label><br>
+                    <input type="radio" id="specificuser" name="users" value="specificuser" onclick="openDropdown()">
+                    <label for="specificuser">Specific User</label>
+                </form>
+
+                <div id="dropdowndiv" style="display:none;position:absolute;right:45vw;top:25vh">
+                    <select id='user-dropdown' name='user'></select>
+                </div>
+
+                <div>
+                    <h4>Select practice area</h4>
+                </div>
+                <div>
+                    <form>
+                        <input type="radio" id="allpa" name="pa" value="allpa">
+                        <label for="allpa">All practice areas</label><br>
+                        <input type="radio" id="specificpa" name="pa" value="specificpa">
+                        <label for="specificpa">Specific practice area</label>
+                    </form>
+                    <select>
+                        <option value="" disabled selected>Find a Practice Area</option>
+                    </select>
+                </div>
+                <div>
+                    <h5>Reporting fact</h5>
+                </div>
+                <div>
+                    <select>
+                        <option value="" disabled selected>Money</option>
+                    </select>
+                </div>
+                <div>
+                    <h5>Select date range</h5>
+                </div>
+                <div>
+                    <select>
+                        <option value="" disabled selected>This month</option>
+                    </select>
+                </div>
+                <div>
+                    <h5>Output format</h5>
+                </div>
+                <div>
+                    <select>
+                        <option value="" disabled selected>Web</option>
+                    </select>
+                </div>
+                <button class="button">Generate report</button>
+
+
+            </div>
+
+
+        </div>
+    </div>
+    <script>
+        function openDropdown() {
+            document.getElementById("dropdowndiv").style.display = "inline";
+            let dropdown = document.getElementById('user-dropdown');
+            let defaultOption = document.createElement('option');
+
+
+            const url =
+                'https://evening-fjord-72698.herokuapp.com/https://staging.clio.com/api/v4/users?order=name(asc)&limit=200&include_co_counsel=true&fields=id,name,first_name,last_name,initials,rate,subscription_type,email,enabled,user_status,account_owner,court_rules_default_attendee,default_activity_description,clio_connect,roles';
+
+            fetch(url, {
+                method: 'get',
+                headers: {
+                    'Authorization': "Bearer " + sessionStorage.getItem("accesstoken"),
+                    'Accept': "*/*",
+                    'Connection': "keep-alive",
+                    'Content-Type': "application/json"
+
+                }
+
+            })
+                .then(
+                    function (response) {
+                        if (response.status !== 200) {
+                            console.warn('Looks like there was a problem. Status Code: ' +
+                                response.status);
+                            return;
+                        }
+
+                        // Examine the text in the response  
+                        response.json().then(function (data) {
+                            var dataretrieved = data.data;
+                            console.log(dataretrieved);
+                            console.log(dropdown);
+                            let option;
+                            for (let i = 0; i < dataretrieved.length; i++) {
+                                option = document.createElement('option');
+                                option.text = dataretrieved[i].name + " - " + dataretrieved[i].user_status;
+                                option.value = dataretrieved[i].name;
+                                dropdown.add(option);
+                            }
+                        });
+                    }
+                )
+                .catch(function (err) {
+                    console.error('Fetch Error -', err);
+                });
+        }
+
+        function removeDropdown() {
+            document.getElementById("dropdowndiv").style.display = "none";
+
+        }
+    </script>
+
+</body>
+
+</html>
