@@ -209,3 +209,11 @@ select{
 #verifiedbutton{
   background-color: green;
 }
+
+#savetokenbutton:after{
+background-color: lightblue;
+}
+
+#savetokenbutton:active:after{
+  background-color: lightblue;
+  }

@@ -1,6 +1,6 @@
 //OAuth 
 function verifyButton() {
-    if (sessionStorage.getItem("accesstoken") !== null) {
+    if (sessionStorage.getItem("accesstoken") != null) {
         console.log("Verification Initiated", sessionStorage.getItem("accesstoken"));
         document.getElementById("verifiedbutton").style.display = "inline"
     }
@@ -41,7 +41,7 @@ function saveAccessToken() {
         }
 
     }).then((response) => response.json())
-        .then((data) => sessionStorage.setItem("accesstoken", data.access_token)).then(setTimeout(() => window.location.reload(), 2000))
+        .then((data) => sessionStorage.setItem("accesstoken", data.access_token)).then(setTimeout(() => window.location.reload(), 1500))
 
 }
 
