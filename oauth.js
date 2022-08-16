@@ -1,6 +1,6 @@
 //OAuth 
 function verifyButton(){
-if(sessionStorage.getItem("accesstoken")!=="undefined"){
+if(sessionStorage.getItem("accesstoken")!=="undefined"||null){
     document.getElementById("verifiedbutton").style.display = "inline"}
 }
 
