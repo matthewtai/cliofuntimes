@@ -195,6 +195,10 @@
         }
 
         function removeDropdown() {
+            let d= document.getElementById("user-dropdown");
+            while (d.firstChild){
+                d.removeChild(d.firstChild)
+            }
             document.getElementById("dropdowndiv").style.display = "none";
 
         }
