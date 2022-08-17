@@ -23,7 +23,8 @@
                 <img class="responsive-img" src="assets/images/logo.png" width="200"> <strong>API FUN TIMES</strong>
             </div>
             <div style="position: fixed; right: 2vw; top:2vh">
-                <i onclick="window.open('./index.html')" class="fa fa-home" style="font-size: 4rem;cursor: pointer;"></i>
+                <i onclick="window.open('./index.html')" class="fa fa-home"
+                    style="font-size: 4rem;cursor: pointer;"></i>
             </div>
 
         </div>
@@ -85,18 +86,22 @@
                 <div>
                     <h4>Select user</h4>
                 </div>
+                <div class="selectusercontainer" style="width: 100%;">
+                    <div style="width:30%">
+                        <form id="userform">
+                            <input type="radio" id="allusers" name="users" value="allusers" onclick="removeDropdown()">
+                            <label for="allusers">All Users</label><br>
+                            <input type="radio" id="specificuser" name="users" value="specificuser"
+                                onclick="openDropdown()">
+                            <label for="specificuser">Specific User</label>
+                        </form>
+                    </div>
 
-                <form id="userform">
-                    <input type="radio" id="allusers" name="users" value="allusers" onclick="removeDropdown()">
-                    <label for="allusers">All Users</label><br>
-                    <input type="radio" id="specificuser" name="users" value="specificuser" onclick="openDropdown()">
-                    <label for="specificuser">Specific User</label>
-                </form>
 
-                <div id="dropdowndiv" style="display:none;position:absolute;right:45vw;top:25vh">
-                    <select id='user-dropdown' name='user'></select>
+                    <div id="dropdowndiv" style="display:none;position: absolute; top: 26vh; right: 70vw;">
+                        <select id='user-dropdown' name='user'></select>
+                    </div>
                 </div>
-
                 <div>
                     <h4>Select practice area</h4>
                 </div>
@@ -107,7 +112,7 @@
                         <input type="radio" id="specificpa" name="pa" value="specificpa">
                         <label for="specificpa">Specific practice area</label>
                     </form>
-                <br>
+                    <br>
                     <select>
                         <option value="" disabled selected>Find a Practice Area</option>
                     </select>
@@ -137,8 +142,8 @@
                     </select>
                 </div>
                 <div style="margin-top:10vh;">
-                <button class="button">Generate report</button>
-            </div>
+                    <button class="button">Generate report</button>
+                </div>
 
             </div>
 
@@ -150,7 +155,7 @@
             document.getElementById("dropdowndiv").style.display = "inline";
             let dropdown = document.getElementById('user-dropdown');
             let defaultOption = document.createElement('option');
-
+            let defaultOptgroup = document.createElement('optgroup');
 
             const url =
                 'https://evening-fjord-72698.herokuapp.com/https://staging.clio.com/api/v4/users?order=name(asc)&limit=200&include_co_counsel=true&fields=id,name,first_name,last_name,initials,rate,subscription_type,email,enabled,user_status,account_owner,court_rules_default_attendee,default_activity_description,clio_connect,roles';
@@ -162,9 +167,7 @@
                     'Accept': "*/*",
                     'Connection': "keep-alive",
                     'Content-Type': "application/json"
-
                 }
-
             })
                 .then(
                     function (response) {
@@ -173,17 +176,32 @@
                                 response.status);
                             return;
                         }
-
                         // Examine the text in the response  
                         response.json().then(function (data) {
                             var dataretrieved = data.data;
-                            console.log(dataretrieved);
-                            console.log(dropdown);
                             let option;
-                            for (let i = 0; i < dataretrieved.length; i++) {
+                            let optgroup;
+
+                            var arrdata = dataretrieved.map(object => {
+                                if (object.user_status === "Firm Users") {
+                                    return { ...object, user_status: "Firm User" };
+                                }
+                                return object;
+
+                            });
+                            var arrdatafinal = arrdata.map(object => {
+                                if (object.user_status === "Co-counsel Users") {
+                                    return { ...object, user_status: "Co-counsel User" }
+                                }
+                                return object;
+                            })
+                            for (let i = 0; i < arrdatafinal.length; i++) {
                                 option = document.createElement('option');
-                                option.text = dataretrieved[i].name + " - " + dataretrieved[i].user_status;
-                                option.value = dataretrieved[i].name;
+                                option.text = arrdatafinal[i].name;
+                                option.value = arrdatafinal[i].name;
+                                optgroup = document.createElement('optgroup');
+                                optgroup.label = arrdatafinal[i].user_status
+                                dropdown.add(optgroup);
                                 dropdown.add(option);
                             }
                         });
@@ -195,8 +213,8 @@
         }
 
         function removeDropdown() {
-            let d= document.getElementById("user-dropdown");
-            while (d.firstChild){
+            let d = document.getElementById("user-dropdown");
+            while (d.firstChild) {
                 d.removeChild(d.firstChild)
             }
             document.getElementById("dropdowndiv").style.display = "none";

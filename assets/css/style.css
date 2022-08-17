@@ -1,69 +1,69 @@
 /* Font */
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
-.container{
-    font-family: 'Quicksand', serif;
-    width: 100%;
+
+.container {
+  font-family: 'Quicksand', serif;
+  width: 100%;
 }
 
 .button {
 
-    margin: 10px;
-    padding: 6px 6px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    cursor: pointer;
-    user-select: none;
-    transition: all 80ms linear;
-    text-align: center;
-    white-space: nowrap;
-    text-decoration: none !important;
-    text-transform: none;
-    text-transform: capitalize;
+  margin: 10px;
+  padding: 10px 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 80ms linear;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none !important;
+  text-transform: none;
+  text-transform: capitalize;
 
-    color:white;
-    border: 0 none;
-    border-radius: 20px;
-    background: #0075bb ;
-    font-size: 13px;
-    line-height: 1.3;
+  color: white;
+  border: 0 none;
+  border-radius: 10px;
+  background: #0075bb;
+  font-size: 13px;
+  line-height: 1.3;
 
-    box-shadow: 2px 2px 2px lightgray;
+  box-shadow: 2px 2px 2px lightgray;
 
-   
+
 }
 
 button:hover {
-    opacity: .85;
-    transition: all 150ms linear;
+  opacity: .85;
+  transition: all 150ms linear;
 }
 
 button:active {
-    transition: all 150ms linear;
-    opacity: .75;
+  transition: all 150ms linear;
+  opacity: .75;
 }
 
 button:focus {
-    outline: 1px dotted #959595;
-    outline-offset: -4px;
+  outline: 1px dotted #959595;
+  outline-offset: -4px;
 }
 
 textarea {
-    width: 100%;
+  width: 100%;
 }
 
 .apiinfo {
-    border-radius: 2vw;
-    padding: 1vw;
-    padding-left: 2vw;
-    padding-right:2vw;
-    margin: 1vw;
+  border-radius: 1vw;
+  padding: 1vw;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  margin: 1vw;
 }
 
-input{
-    
-    padding: 0.5vw;
-    padding-left: 1vw;
-    padding-right:1vw;
-    margin: 0.5vw;
+input {
+
+  padding: 0.5vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  margin: 0.5vw;
 }
 
 
@@ -84,18 +84,18 @@ body {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
-  
+
 }
 
-.main{
+.main {
   max-width: 1200px;
   margin: 0 auto;
 }
 
 h1 {
-    font-size: 24px;
-    font-weight: 400;
-    text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
 }
 
 img {
@@ -110,7 +110,7 @@ img {
   font-size: 14px;
   text-transform: uppercase;
   position: relative;
-  border-radius: 4px;
+  border-radius: 10px;
   font-weight: 400;
   display: block;
   width: 100%;
@@ -159,7 +159,7 @@ img {
 
 .card_content {
   padding: 1rem;
-  height:100%;
+  height: 100%;
   background: #AEC6CF;
 }
 
@@ -176,27 +176,28 @@ img {
   color: #ffffff;
   font-size: 0.875rem;
   line-height: 1.5;
-  margin-bottom: 1.25rem;    
+  margin-bottom: 1.25rem;
   font-weight: 400;
 }
-.made_by{
+
+.made_by {
   font-weight: 400;
   font-size: 13px;
   margin-top: 35px;
   text-align: center;
 }
 
-.SideBarDiv{
-    margin-left:3vw;
+.SideBarDiv {
+  margin-left: 3vw;
 }
 
-select{
+select {
   font-family: 'Quicksand', serif;
-  border-radius: 20px;
-  padding: 0.5vh;
+  border-radius: 10px;
+  padding: 0.6vh;
 }
 
-.select-selected:after{
+.select-selected:after {
   border: 6px solid transparent;
   border-color: #fff transparent transparent transparent;
 }
@@ -206,14 +207,14 @@ select{
   top: 7px;
 }
 
-#verifiedbutton{
+#verifiedbutton {
   background-color: green;
 }
 
-#savetokenbutton:after{
-background-color: lightblue;
+#savetokenbutton:after {
+  background-color: lightblue;
 }
 
-#savetokenbutton:active:after{
+#savetokenbutton:active:after {
   background-color: lightblue;
-  }
+}
