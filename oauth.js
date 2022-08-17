@@ -1,9 +1,11 @@
 //OAuth 
 function verifyButton() {
-    if (sessionStorage.getItem("accesstoken") === "undefined" ||null||undefined) {
+    if (sessionStorage.getItem("accesstoken") == null || sessionStorage.getItem("accesstoken")=="undefined"){
+       
         document.getElementById("verifiedbutton").style.display = "hidden";
     }else{
         document.getElementById("verifiedbutton").style.display = "inline";
+        
     }
     
 }
