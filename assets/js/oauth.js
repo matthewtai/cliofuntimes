@@ -1,13 +1,10 @@
 //OAuth 
 function verifyButton() {
-    if (sessionStorage.getItem("accesstoken") == null || sessionStorage.getItem("accesstoken")=="undefined"){
-       
+    if (sessionStorage.getItem("accesstoken") == null || sessionStorage.getItem("accesstoken") == "undefined") {
         document.getElementById("verifiedbutton").style.display = "hidden";
-    }else{
+    } else {
         document.getElementById("verifiedbutton").style.display = "inline";
-        
     }
-    
 }
 
 function saveKeyandSecret() {
