@@ -31,7 +31,7 @@ function saveAccessToken() {
     var authorizationCode = document.getElementById('authcode').value;
     sessionStorage.setItem("authorizationcode", authorizationCode);
     var tokenurl =
-        'https://evening-fjord-72698.herokuapp.com/https://staging.clio.com/oauth/token?client_id=' + key + '&client_secret=' + secret + '&grant_type=authorization_code&code=' + authorizationCode + '&redirect_uri=' + redirect_uri
+        'https://staging.clio.com/oauth/token?client_id=' + key + '&client_secret=' + secret + '&grant_type=authorization_code&code=' + authorizationCode + '&redirect_uri=' + redirect_uri
     fetch(tokenurl, {
         method: 'post',
         headers: {
