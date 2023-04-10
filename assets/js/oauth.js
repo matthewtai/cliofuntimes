@@ -35,7 +35,7 @@ function saveAccessToken() {
     fetch(tokenurl, {
         method: 'post',
         headers: {
-            'Host': 'app.clio.com',
+            'Host': 'staging.clio.com',
             'Connection': "keep-alive",
             'Content-Type': "application/x-www-form-urlencoded"
         }
